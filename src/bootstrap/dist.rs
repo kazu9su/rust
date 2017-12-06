@@ -1076,11 +1076,6 @@ impl Step for Rls {
         let target = self.target;
         assert!(build.config.extended);
 
-        if !builder.config.toolstate.rls.testing() {
-            println!("skipping Dist RLS stage{} ({})", stage, target);
-            return None
-        }
-
         println!("Dist RLS stage{} ({})", stage, target);
         let src = build.src.join("src/tools/rls");
         let release_num = build.release_num("rls");
@@ -1162,11 +1157,6 @@ impl Step for Rustfmt {
         let stage = self.stage;
         let target = self.target;
         assert!(build.config.extended);
-
-        if !builder.config.toolstate.rustfmt.testing() {
-            println!("skipping Dist Rustfmt stage{} ({})", stage, target);
-            return None
-        }
 
         println!("Dist Rustfmt stage{} ({})", stage, target);
         let src = build.src.join("src/tools/rustfmt");
